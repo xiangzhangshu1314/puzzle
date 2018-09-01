@@ -45,24 +45,20 @@ function gameState() {
 			randomArr();
 			cellOrder(imgRanArr);
 			imgCell.on('touchstart', function(e) {
-			
-		
-				console.log('woyijingchufale!');
-				console.log(e.originalEvent.targetTouches[0].pageX);
 				var index1 = $(this).index();
-				var cellX = e.pageX - imgCell.eq(index1).offset().left;
-				var cellY = e.pageY - imgCell.eq(index1).offset().top;
+				var cellX = e.originalEvent.targetTouches[0].pageX - imgCell.eq(index1).offset().left;
+				var cellY = e.originalEvent.targetTouches[0].pageY - imgCell.eq(index1).offset().top;
 			
 				$(document).on('touchmove', function(e2) {
 					
 					imgCell.eq(index1).css({
 						'z-index': '40',
-						'left': e2.pageX - cellX - imgArea.offset().left + 'px',
-						'top': e2.pageY - cellY - imgArea.offset().top + 'px',
+						'left': e2.originalEvent.targetTouches[0].pageX - cellX - imgArea.offset().left + 'px',
+						'top': e2.originalEvent.targetTouches[0].pageY - cellY - imgArea.offset().top + 'px',
 					});
 				}).on('touchend', function(e3) {
-					var left = e3.pageX - imgArea.offset().left;
-					var top = e3.pageY - imgArea.offset().top;
+					var left = e3.originalEvent.changedTouches[0].pageX - imgArea.offset().left;
+					var top = e3.originalEvent.changedTouches[0].pageY - imgArea.offset().top;
 					var index2 = changeIndex(left, top, index1);
 					if(index1 == index2) {
 						cellReturn(index1);
