@@ -50,7 +50,7 @@ function gameState() {
 				var cellY = e.originalEvent.targetTouches[0].pageY - imgCell.eq(index1).offset().top;
 			
 				$(document).on('touchmove', function(e2) {
-					
+					e2.preventDefault();
 					imgCell.eq(index1).css({
 						'z-index': '40',
 						'left': e2.originalEvent.targetTouches[0].pageX - cellX - imgArea.offset().left + 'px',
