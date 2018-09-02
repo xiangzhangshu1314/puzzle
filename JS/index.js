@@ -72,7 +72,7 @@ function gameState() {
 			$(this).text('开始');
 			flag = true;
 			cellOrder(imgOrigArr);
-			imgCell.off('mouseover').off('touchstart').off('touchend');
+			imgCell.off('touchstart').off('touchend');
 		}
 	})
 }
